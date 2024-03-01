@@ -9,14 +9,12 @@ Data (message) is shared via a socket, but it is encrypted using public key (.pe
 ### Shell:
  - send_message_shell.sh (Sender):
  - receive_message_shell.sh (Receiver):
- 
-## Key generation (AES - 256 bits)
-openssl rand -base64 32 > aes_key.txt 
 
 ## Key generation (.pem)
 This is an example to generate the pair .pem keys (public and private).
 openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:4096
 openssl rsa -pubout -in private_key.pem -out public_key.pem
 
-## Furure upgrades
-First message indicates the format file that is gonna be sent.
+## Future upgrades
+- The first message indicates the file format to be sent.
+- Use of hybrid encription, AES to encrypt data an RSA to send the AES key to the receiver. openssl rand -base64 32 > aes_key.txt 
